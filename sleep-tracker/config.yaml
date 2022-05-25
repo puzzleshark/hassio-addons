@@ -8,3 +8,6 @@ homeassistant_api: true
 hassio_api: true
 arch:
   - aarch64
+schema:
+  fitbit_client_id: str
+  fitbit_client_key: str
