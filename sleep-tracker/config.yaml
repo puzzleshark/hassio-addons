@@ -1,13 +1,13 @@
 name: "Fitbit Data"
 description: "Get timeseries fitbit data."
-version: "0.0.1"
+version: "0.0.2"
 slug: "fitbit_data"
 ports:
-  5001/tcp: 5001
+  5000/tcp: 5000
 homeassistant_api: true
 hassio_api: true
 arch:
   - aarch64
 schema:
   fitbit_client_id: str
-  fitbit_client_key: str
+  fitbit_client_secret: str
