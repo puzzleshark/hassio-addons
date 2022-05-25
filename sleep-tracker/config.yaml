@@ -1,0 +1,10 @@
+name: "Fitbit Data"
+description: "Get timeseries fitbit data."
+version: "0.0.1"
+slug: "fitbit_data"
+ports:
+  5001/tcp: 5001
+homeassistant_api: true
+hassio_api: true
+arch:
+  - aarch64
