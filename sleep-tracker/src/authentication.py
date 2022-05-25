@@ -102,4 +102,4 @@ class Authenticator:
             return "done."
 
         self.app = app
-        self.server = asyncio.create_task(app.run_task(host="0.0.0.0", debug=True, port=5001))
+        self.server = asyncio.create_task(app.run_task(host="0.0.0.0", debug=True))
