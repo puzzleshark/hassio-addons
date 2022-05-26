@@ -4,3 +4,4 @@ node_modules/
 package-lock.json
 .cache
 src/__pycache__/
+options.json
