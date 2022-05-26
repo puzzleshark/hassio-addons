@@ -7,7 +7,7 @@ ports:
 homeassistant_api: true
 hassio_api: true
 services:
-  light: need
+  - light: need
 arch:
   - aarch64
 schema:
