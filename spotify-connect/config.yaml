@@ -6,8 +6,9 @@ ports:
   5000/tcp: 5000
 homeassistant_api: true
 hassio_api: true
+hassio_role: manager
 services:
-  - light: need
+  light: need
 arch:
   - aarch64
 schema:
