@@ -1,0 +1,8 @@
+name: "Nextcloud"
+description: "nextcloud storage"
+version: "0.0.1"
+slug: "nextcloud_storage"
+ports:
+  80/tcp: 80
+arch:
+  - aarch64
