@@ -6,3 +6,5 @@ ports:
   80/tcp: 80
 arch:
   - aarch64
+map:
+  - media
