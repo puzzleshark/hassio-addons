@@ -1,7 +1,7 @@
 name: "Keys to Lights"
 description: "Keys to Lights for spotify."
 version: "0.0.2"
-slug: "spotify_lights"
+slug: "keys_to_lights"
 ports:
   5000/tcp: 5000
 homeassistant_api: true
