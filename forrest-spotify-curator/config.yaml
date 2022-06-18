@@ -1,5 +1,5 @@
-name: "Keys to Lights"
-description: "Keys to Lights for spotify."
+name: "Forrest Spotify Curator"
+description: "curate playlist based on if it's in-tune."
 version: "0.0.2"
 slug: "spotify_lights"
 ports:
