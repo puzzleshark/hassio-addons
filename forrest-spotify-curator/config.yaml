@@ -1,7 +1,7 @@
 name: "Forrest Spotify Curator"
 description: "curate playlist based on if it's in-tune."
 version: "0.0.2"
-slug: "spotify_lights"
+slug: "forrest_curator"
 ports:
   5000/tcp: 5000
 homeassistant_api: true
