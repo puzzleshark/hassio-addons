@@ -1,3 +1,4 @@
 spotipy
 numpy
+librosa
 quart
