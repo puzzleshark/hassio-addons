@@ -4,7 +4,6 @@ FROM $BUILD_FROM
 COPY requirements.txt /usr/src/requirements.txt
 RUN pip install -r /usr/src/requirements.txt
 
-COPY src /usr/src
-WORKDIR /usr/src
+COPY keys_to_lights /keys_to_lights
 
-CMD python real_entry.py
+CMD python /keys_to_lights/real_entry.py

@@ -5,7 +5,7 @@ import os
 
 from quart import Quart, request
 
-import secrets
+from sleep_tracker import secrets
 
 
 def load_token_dict():

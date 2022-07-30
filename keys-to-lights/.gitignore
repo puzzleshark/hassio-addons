@@ -3,5 +3,5 @@ node_modules/
 .idea/
 package-lock.json
 .cache
-src/__pycache__/
+keys_to_lights/__pycache__/
 options.json

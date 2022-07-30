@@ -1,6 +1,6 @@
 import requests
 
-import local_secrets
+from keys_to_lights import local_secrets
 
 headers = {
     "Authorization": "Bearer " + local_secrets.HOME_ASSISTANT_TOKEN,

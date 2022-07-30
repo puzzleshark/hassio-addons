@@ -1,8 +1,8 @@
 import time
 import asyncio
 
-import color_association
-import change_color
+from keys_to_lights import color_association
+from keys_to_lights import change_color
 
 
 

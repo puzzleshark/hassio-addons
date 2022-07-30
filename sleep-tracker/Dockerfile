@@ -4,7 +4,6 @@ FROM $BUILD_FROM
 COPY requirements.txt /usr/src/requirements.txt
 RUN pip install -r /usr/src/requirements.txt
 
-COPY src /usr/src
-WORKDIR /usr/src
+COPY sleep_tracker /sleep_tracker
 
-CMD python main.py
+CMD python /sleep_tracker/main.py

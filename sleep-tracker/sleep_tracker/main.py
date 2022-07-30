@@ -4,8 +4,8 @@ import datetime
 
 from dateutil import parser
 
-import authentication
-import secrets
+from sleep_tracker import authentication
+from sleep_tracker import secrets
 
 
 sleep_state_map = {

@@ -1,7 +1,7 @@
 import asyncio
 
-import light_show
-import authentication
+from keys_to_lights import light_show
+from keys_to_lights import authentication
 
 
 async def main():
