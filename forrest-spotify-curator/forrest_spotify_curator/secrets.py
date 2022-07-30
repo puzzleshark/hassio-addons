@@ -1,7 +1,7 @@
 import os
 import json
 
-AS_ADDON = False
+AS_ADDON = True
 
 CACHE_PATH = "/data/.cache" if AS_ADDON else os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".cache"))
 MUSIC_PATH = "/data/music" if AS_ADDON else os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "music"))
