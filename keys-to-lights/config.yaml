@@ -1,6 +1,6 @@
 name: "Keys to Lights"
 description: "Keys to Lights for spotify."
-version: "0.0.6"
+version: "0.0.7"
 slug: "keys_to_lights"
 ports:
   5000/tcp: 5000
