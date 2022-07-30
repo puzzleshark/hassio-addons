@@ -1,9 +1,9 @@
 import requests
 
-from keys_to_lights import secrets
+import keys_to_lights
 
 headers = {
-    "Authorization": "Bearer " + secrets.HOME_ASSISTANT_TOKEN,
+    "Authorization": "Bearer " + keys_to_lights.secrets.HOME_ASSISTANT_TOKEN,
     "content-type": "application/json",
 }
 
@@ -17,7 +17,7 @@ def change_color(r, g, b):
         # "transition": 20
     }
 
-    requests.post(secrets.HOME_ASSISTANT_URL, json=data, headers=headers)
+    requests.post(keys_to_lights.secrets.HOME_ASSISTANT_URL, json=data, headers=headers)
 
 if __name__ == "__main__":
 
