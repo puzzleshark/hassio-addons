@@ -1,12 +1,9 @@
 name: "Forrest Spotify Curator"
 description: "curate playlist based on if it's in-tune."
-version: "0.0.6"
+version: "0.0.7"
 slug: "forrest_curator"
 ports:
   5000/tcp: 5000
-homeassistant_api: true
-hassio_api: true
-hassio_role: manager
 arch:
   - aarch64
 schema:
