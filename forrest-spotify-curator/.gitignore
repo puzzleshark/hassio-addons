@@ -3,5 +3,6 @@ node_modules/
 .idea/
 package-lock.json
 .cache
+music/
 forrest_spotify_curator/__pycache__/
 options.json

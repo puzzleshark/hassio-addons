@@ -15,7 +15,7 @@ class SpotifyAuthenticator:
         self.cache = CacheFileHandler(secrets.CACHE_PATH)
 
         self.auth = SpotifyOAuth(
-            scope=["user-read-currently-playing"],
+            scope=["playlist-modify-public", "playlist-modify-private"],
             client_id=secrets.SPOTIFY_CLIENT_ID,
             client_secret=secrets.SPOTIFY_CLIENT_SECRET,
             redirect_uri="http://localhost:8888/callback",

@@ -2,3 +2,4 @@ spotipy
 numpy
 librosa
 quart
+spotdl

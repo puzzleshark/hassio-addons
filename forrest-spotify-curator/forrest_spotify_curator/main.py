@@ -8,16 +8,13 @@ from forrest_spotify_curator import authentication
 from forrest_spotify_curator import secrets
 
 
-MP3_FOLDER = 'music'
-
-
 def download_playlist(folder_name):
     print("creating folder")
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
     print("created dirs")
     print("starting download")
-    os.system(f'spotdl https://open.spotify.com/playlist/{secrets.PLAYLIST_ID} -o {folder_name}')
+    os.system(f'spotdl https://open.spotify.com/playlist/{secrets.SPOTIFY_PLAYLIST_ID} -o {folder_name}')
     print("finished download")
     return os.listdir(folder_name)
 
@@ -25,7 +22,7 @@ def download_playlist(folder_name):
 def get_filename(track, filenames):
     for filename in filenames:
         if track['name'].strip('?') in filename:
-            return os.path.join("music", filename)
+            return os.path.join(secrets.MUSIC_PATH, filename)
 
 
 def song_in_tune(filename):
@@ -51,9 +48,9 @@ async def main():
 
     print("have spotify object")
 
-    filenames = download_playlist(MP3_FOLDER)
+    filenames = download_playlist(secrets.MUSIC_PATH)
 
-    results = spotify.playlist_items(f"spotify:playlist:{secrets.PLAYLIST_ID}")
+    results = spotify.playlist_items(f"spotify:playlist:{secrets.SPOTIFY_PLAYLIST_ID}")
 
     print("have results")
 
@@ -63,12 +60,13 @@ async def main():
         print('track    : ' + track['name'])
         print('audio    : ' + track['uri'])
         filename = get_filename(track, filenames)
+        print(filename)
 
         try:
             if not song_in_tune(filename):
-                spotify.playlist_remove_all_occurrences_of_items(secrets.PLAYLIST_ID, [track['uri']])
+                spotify.playlist_remove_all_occurrences_of_items(secrets.SPOTIFY_PLAYLIST_ID, [track['uri']])
                 print("removed it")
-        except:
-            print("could not parse, need to figure this out")
+        except Exception as e:
+            print("could not parse, need to figure this out", e)
 
 asyncio.run(main())
