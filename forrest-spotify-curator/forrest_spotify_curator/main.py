@@ -8,23 +8,6 @@ from forrest_spotify_curator import authentication
 from forrest_spotify_curator import secrets
 
 
-def download_playlist(folder_name):
-    print("creating folder")
-    if not os.path.exists(folder_name):
-        os.makedirs(folder_name)
-    print("created dirs")
-    print("starting download")
-    os.system(f'spotdl https://open.spotify.com/playlist/{secrets.SPOTIFY_PLAYLIST_ID} -o {folder_name}')
-    print("finished download")
-    return os.listdir(folder_name)
-
-
-def get_filename(track, filenames):
-    for filename in filenames:
-        if track['name'].strip('?') in filename:
-            return os.path.join(secrets.MUSIC_PATH, filename)
-
-
 def song_in_tune(filename):
     y, sr = librosa.load(filename, duration=40)
     value = librosa.estimate_tuning(y=y, sr=sr)
@@ -48,7 +31,10 @@ async def main():
 
     print("have spotify object")
 
-    filenames = download_playlist(secrets.MUSIC_PATH)
+    if not os.path.exists(secrets.MUSIC_PATH):
+        os.makedirs(secrets.MUSIC_PATH)
+
+    # filenames = download_playlist(secrets.MUSIC_PATH)
 
     results = spotify.playlist_items(f"spotify:playlist:{secrets.SPOTIFY_PLAYLIST_ID}")
 
@@ -59,14 +45,17 @@ async def main():
         print("====================================================================")
         print('track    : ' + track['name'])
         print('audio    : ' + track['uri'])
-        filename = get_filename(track, filenames)
-        print(filename)
+
+        filename = track["id"] + ".wav"
+
+        os.system(f'spotdl {track["external_urls"]["spotify"]} -o {secrets.MUSIC_PATH} --output-format wav -p {filename}')
 
         try:
-            if not song_in_tune(filename):
+            if not song_in_tune(os.path.join(secrets.MUSIC_PATH, filename)):
                 spotify.playlist_remove_all_occurrences_of_items(secrets.SPOTIFY_PLAYLIST_ID, [track['uri']])
                 print("removed it")
         except Exception as e:
-            print("could not parse, need to figure this out", e)
+            print("could not parse, need to figure this out, removing.", e)
+            spotify.playlist_remove_all_occurrences_of_items(secrets.SPOTIFY_PLAYLIST_ID, [track['uri']])
 
 asyncio.run(main())

@@ -4,6 +4,6 @@ FROM $BUILD_FROM
 COPY requirements.txt /usr/src/requirements.txt
 RUN pip install -r /usr/src/requirements.txt
 
-COPY sleep_tracker /sleep_tracker
+COPY sleep_tracker sleep_tracker
 
-CMD python /sleep_tracker/main.py
+CMD (export PYTHONPATH=$PWD:$PYTHONPATH && python sleep_tracker/main.py)
