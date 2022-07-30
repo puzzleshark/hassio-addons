@@ -1,9 +1,9 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-COPY requirements.txt /usr/src/requirements.txt
-RUN pip install -r /usr/src/requirements.txt
+COPY . /project
+WORKDIR /project
 
-COPY sleep_tracker sleep_tracker
+RUN python3 -m pip install -r requirements.txt
 
-CMD (export PYTHONPATH=$PWD:$PYTHONPATH && python sleep_tracker/main.py)
+CMD (export PYTHONPATH=$PWD:$PYTHONPATH && python3 sleep_tracker/main.py)

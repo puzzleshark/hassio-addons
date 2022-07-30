@@ -3,9 +3,8 @@ FROM $BUILD_FROM
 
 RUN apt update && apt install ffmpeg -y
 
-COPY requirements.txt /usr/src/requirements.txt
-RUN pip install -r /usr/src/requirements.txt
+COPY . /project
+WORKDIR /project
+RUN python3 -m pip install -r requirements.txt
 
-COPY forrest-spotify-curator forrest-spotify-curator
-
-CMD (export PYTHONPATH=$PWD:$PYTHONPATH && python forrest-spotify-curator/main.py)
+CMD (export PYTHONPATH=$PWD:$PYTHONPATH && python3 forrest-spotify-curator/main.py)
