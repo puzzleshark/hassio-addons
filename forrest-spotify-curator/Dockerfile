@@ -7,4 +7,4 @@ COPY . /project
 WORKDIR /project
 RUN python3 -m pip install -r requirements.txt
 
-CMD (export PYTHONPATH=$PWD:$PYTHONPATH && python3 forrest-spotify-curator/main.py)
+CMD (export PYTHONPATH=$PWD:$PYTHONPATH && python3 forrest_spotify_curator/main.py)
