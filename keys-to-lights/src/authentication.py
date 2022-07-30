@@ -4,7 +4,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 from quart import Quart, request
 
-import secrets
+import local_secrets
 
 
 class SpotifyAuthenticator:
@@ -12,12 +12,12 @@ class SpotifyAuthenticator:
     def __init__(self):
         self.event = asyncio.Event()
 
-        self.cache = CacheFileHandler(secrets.CACHE_PATH)
+        self.cache = CacheFileHandler(local_secrets.CACHE_PATH)
 
         self.auth = SpotifyOAuth(
             scope=["user-read-currently-playing"],
-            client_id=secrets.SPOTIFY_CLIENT_ID,
-            client_secret=secrets.SPOTIFY_CLIENT_SECRET,
+            client_id=local_secrets.SPOTIFY_CLIENT_ID,
+            client_secret=local_secrets.SPOTIFY_CLIENT_SECRET,
             redirect_uri="http://localhost:8888/callback",
             open_browser=False,
             cache_handler=self.cache
