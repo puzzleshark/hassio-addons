@@ -4,7 +4,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 from quart import Quart, request
 
-from keys_to_lights import secrets
+from forrest_spotify_curator import secrets
 
 
 class SpotifyAuthenticator:

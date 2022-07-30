@@ -6,4 +6,4 @@ RUN pip install -r /usr/src/requirements.txt
 
 COPY keys_to_lights /keys_to_lights
 
-CMD python /keys_to_lights/real_entry.py
+CMD python /keys_to_lights/main.py

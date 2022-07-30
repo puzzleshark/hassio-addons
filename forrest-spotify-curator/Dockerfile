@@ -4,7 +4,6 @@ FROM $BUILD_FROM
 COPY requirements.txt /usr/src/requirements.txt
 RUN pip install -r /usr/src/requirements.txt
 
-COPY src /usr/src
-WORKDIR /usr/src
+COPY forrest-spotify-curator /forrest-spotify-curator
 
-CMD python real_entry.py
+CMD python forrest-spotify-curator/main.py
