@@ -5,7 +5,7 @@ import librosa
 import numpy as np
 
 from forrest_spotify_curator import authentication
-from forrest_spotify_curator import secrets
+from forrest_spotify_curator import configuration
 
 
 def song_in_tune(filename):
@@ -31,12 +31,12 @@ async def main():
 
     print("have spotify object")
 
-    if not os.path.exists(secrets.MUSIC_PATH):
-        os.makedirs(secrets.MUSIC_PATH)
+    if not os.path.exists(configuration.MUSIC_PATH):
+        os.makedirs(configuration.MUSIC_PATH)
 
-    # filenames = download_playlist(secrets.MUSIC_PATH)
+    # filenames = download_playlist(configuration.MUSIC_PATH)
 
-    results = spotify.playlist_items(f"spotify:playlist:{secrets.SPOTIFY_PLAYLIST_ID}")
+    results = spotify.playlist_items(f"spotify:playlist:{configuration.SPOTIFY_PLAYLIST_ID}")
 
     print("have results")
 
@@ -48,14 +48,14 @@ async def main():
 
         filename = track["id"] + ".wav"
 
-        os.system(f'spotdl {track["external_urls"]["spotify"]} -o {secrets.MUSIC_PATH} --output-format wav -p {filename}')
+        os.system(f'spotdl {track["external_urls"]["spotify"]} -o {configuration.MUSIC_PATH} --output-format wav -p {filename}')
 
         try:
-            if not song_in_tune(os.path.join(secrets.MUSIC_PATH, filename)):
-                spotify.playlist_remove_all_occurrences_of_items(secrets.SPOTIFY_PLAYLIST_ID, [track['uri']])
+            if not song_in_tune(os.path.join(configuration.MUSIC_PATH, filename)):
+                spotify.playlist_remove_all_occurrences_of_items(configuration.SPOTIFY_PLAYLIST_ID, [track['uri']])
                 print("removed it")
         except Exception as e:
             print("could not parse, need to figure this out, removing.", e)
-            spotify.playlist_remove_all_occurrences_of_items(secrets.SPOTIFY_PLAYLIST_ID, [track['uri']])
+            spotify.playlist_remove_all_occurrences_of_items(configuration.SPOTIFY_PLAYLIST_ID, [track['uri']])
 
 asyncio.run(main())

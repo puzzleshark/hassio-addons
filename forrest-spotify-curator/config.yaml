@@ -1,6 +1,6 @@
 name: "Forrest Spotify Curator"
 description: "curate playlist based on if it's in-tune."
-version: "0.0.9"
+version: "0.0.10"
 slug: "forrest_curator"
 ports:
   5000/tcp: 5000
